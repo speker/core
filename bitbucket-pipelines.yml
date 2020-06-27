@@ -1,0 +1,8 @@
+pipelines:
+    default:
+    - step:
+        script:
+            - curl --insecure -OL https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.2.0.1873-linux.zip
+            - unzip sonar-scanner-cli-4.2.0.1873-linux.zip
+            - export SONAR_SCANNER_OPTS="-Xmx1024m"
+            - ./sonar-scanner-4.2.0.1873-linux/bin/sonar-scanner -Dsonar.projectVersion=$BITBUCKET_BUILD_NUMBER -Dsonar.projectName=ReaPy-Framework -Dsonar.sourceEncoding=UTF-8 -Dsonar.sources=. -Dsonar.exclusions=utilities/mysql/**,utilities/pdf/**,utilities/postgresql/**,utilities/redis/**,utilities/rest/**,utilities/restful/**,utilities/session/**,utilities/soap/** -Dsonar.exclusions=*.yml -Dsonar.host.url=https://sonar.reactors.cloud -Dsonar.projectKey=ReaPy-Framework -Dsonar.login=9c7eff434525c7a14caa384661a794da670de608
