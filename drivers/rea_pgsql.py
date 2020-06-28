@@ -37,11 +37,11 @@ class ReaPgsql:
             else:
                 configurations = ReaPgsql.__configurations
             try:
-                ReaPgsql.__db = ReaPy.pg_sql().connect(user=configurations['user'],
-                                                       password=configurations['password'],
-                                                       host=configurations['host'],
-                                                       port=configurations['port'],
-                                                       database=configurations['database'])
+                ReaPgsql.__db = ReaPy.pg_sql().connect(user='postgres',
+                                                       password='1234',
+                                                       host='127.0.0.1',
+                                                       port=5432,
+                                                       database='yeten')
                 ReaPgsql.__db.autocommit = True
             except Exception as exc:
                 print('pge1', exc)
